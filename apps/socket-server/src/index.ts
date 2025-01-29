@@ -3,18 +3,11 @@ import { WebSocketServer, WebSocket } from "ws";
 const io = new WebSocketServer({ port: 4000 });
 
 io.on("connection", (socket: WebSocket) => {
-  console.log("New client connected");
+  console.log("user connected to socket server");
 
   socket.on("message", (message) => {
-    const text = message.toString();
-    console.log("Received:", text);
-
-    socket.send(`Server received: ${text}`);
-  });
-
-  socket.on("close", () => {
-    console.log("Client disconnected");
+    console.log("user sent message:", message.toString());
   });
 });
 
-console.log("WebSocket server running on ws://localhost:4000");
+console.log("socket server is running on ws://localhost:5000");
